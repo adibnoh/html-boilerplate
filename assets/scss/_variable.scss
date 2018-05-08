@@ -1,0 +1,13 @@
+// font
+@include font-face('Roboto-Regular', '../fonts/Roboto/Roboto-Regular', null, null, woff woff2);
+@include font-face('Roboto-Bold', '../fonts/Roboto/Roboto-Bold', null, null, woff woff2);
+
+// color
+$blue: #0051AF;
+$black: #252A2A;
+$black-subtle: #404040;
+$grey: #888888;
+$dark_grey: #252A2A;
+$linen: #F7F3E3;
+$dim_gray: #6D676E;
+$white: #FFF;

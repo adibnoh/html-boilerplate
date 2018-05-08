@@ -1,0 +1,110 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto-Bold', sans-serif;
+}
+
+div, p, textarea {
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* prevent ghost image draging */
+.nodrag {
+  user-drag: none; 
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* styling list with floating number */
+$start: 1;
+ol.point {
+  counter-reset: item $start;
+  padding-left: 10px;
+  margin-left: 5px;
+  ol {
+    counter-reset: item;
+    > li {
+      display: block;
+      position: relative;
+      font-size: 14px;
+    }
+    > li:before {
+      content: counters(item, ".");
+      counter-increment: item;
+      position: absolute;
+      margin-right: 100%;
+      right: 10px; /* space between number and text */
+    }
+  }
+  li {
+    color: black;
+    white-space: normal;
+  }
+  > li:before {
+    content: '';
+  }
+  > li {
+    display: block;
+    position: relative;
+    font-size: 14px;
+  }
+}
+/* if there are multiple separate list, use this class to reset counter */
+.reset-counter {
+  item: $start;
+}
+
+/* styling list with lower alpha with bracket */
+ul.lower-alpha-bracket {
+  counter-reset:item;
+  list-style:none;
+}
+ul.lower-alpha-bracket li:before {
+  content: ""counter(item, lower-alpha) ") ";
+  counter-increment: item;
+}
+
+/* background */
+.background-white {
+  background-color: $white;
+}
+.background-black {
+  background-color: $black;
+}
+
+/* typography */
+.text-white {
+  color: $white;
+}
+.text-black {
+  color: $black;
+}
+
+/* padding and margin generator */
+@for $i from 0 through 12 {
+  .ma-#{$i*5} { margin: $i*5px; }
+  .ml-#{$i*5} { margin-left: $i*5px; }
+  .mr-#{$i*5} { margin-right: $i*5px; }
+  .mt-#{$i*5} { margin-top: $i*5px; }
+  .mb-#{$i*5} { margin-bottom: $i*5px; }
+
+  .pa-#{$i*5} { padding: $i*5px; }
+  .pl-#{$i*5} { padding-left: $i*5px; }
+  .pr-#{$i*5} { padding-right: $i*5px; }
+  .pt-#{$i*5} { padding-top: $i*5px; }
+  .pb-#{$i*5} { padding-bottom: $i*5px; }
+}
+
+// font size generator
+@for $i from 10 through 20 {
+  .font-#{$i} {
+    font-size: #{$i}px;
+  }
+}

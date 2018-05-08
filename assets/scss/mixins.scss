@@ -1,0 +1,326 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($property, $duration, $timing-function, $delay) {
+  @if $property != transform {
+    transition:$property $duration $timing-function $delay;
+      -webkit-transition:$property $duration $timing-function $delay;
+      -o-transition:$property $duration $timing-function $delay;
+      -moz-transition:$property $duration $timing-function $delay;
+  } @else {
+    transition:transform $duration $timing-function $delay;
+      -webkit-transition:-webkit-transform $duration $timing-function $delay;
+      -o-transition:-o-transform $duration $timing-function $delay;
+      -moz-transition:-moz-transform $duration $timing-function $delay;
+  }
+}
+
+@mixin transformScale($scaleX, $scaleY) {
+  -ms-transform: scale($scaleX,$scaleY); /* IE 9 */
+    -webkit-transform: scale($scaleX,$scaleY); /* Safari */
+    transform: scale($scaleX,$scaleY); /* Standard syntax */
+}
+
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value;
+     -moz-box-shadow: $value;
+      -ms-box-shadow: $value;
+          box-shadow: $value;
+}
+
+@mixin border-bottom-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+     -moz-border-bottom-left-radius: $radius;
+      -ms-border-bottom-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+}
+
+@mixin border-bottom-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+     -moz-border-bottom-right-radius: $radius;
+      -ms-border-bottom-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+}
+
+@mixin border-top-left-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+     -moz-border-top-left-radius: $radius;
+      -ms-border-top-left-radius: $radius;
+          border-top-left-radius: $radius;
+}
+
+@mixin border-top-right-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+     -moz-border-top-right-radius: $radius;
+      -ms-border-top-right-radius: $radius;
+          border-top-right-radius: $radius;
+}
+
+@mixin box-sizing($value) {
+  -webkit-box-sizing: $value;
+     -moz-box-sizing: $value;
+          box-sizing: $value;
+}
+
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+     -moz-user-select: $value;
+      -ms-user-select: $value;
+       -o-user-select: $value;
+          user-select: $value;
+}
+
+@mixin display-flex() {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+}
+
+/* Sometimes display flex doesn't work in firefox, in that case overwrite specific firefox conditional */
+@-moz-document url-prefix() { 
+  // .selector {
+  //  display: -moz-box;
+  // }
+}
+
+@mixin justify-content($value) {
+  -webkit-justify-content: $value;
+  -ms-flex-pack: $value; /* For ancient IE 10, callback justify-content:$value; */
+  justify-content: $value;
+}
+
+@mixin align-items($value) {
+  -webkit-align-items: $value;
+  -ms-flex-align: $value; /* For ancient IE 10, callback align-items: $value; */
+    align-items: $value;
+}
+
+@mixin flex-direction($value) {
+  -webkit-flex-direction: $value;
+  -ms-flex-direction: $value; /* For ancient IE 10, callback flex-direction: $value; */
+    flex-direction: $value;
+}
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+// usage example
+.box { @include border-radius(10px); }@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+   -ms-border-radius: $radius;
+       border-radius: $radius;
+}
+
+@mixin transition($property, $duration, $timing-function, $delay) {
+@if $property != transform {
+ transition:$property $duration $timing-function $delay;
+   -webkit-transition:$property $duration $timing-function $delay;
+   -o-transition:$property $duration $timing-function $delay;
+   -moz-transition:$property $duration $timing-function $delay;
+} @else {
+ transition:transform $duration $timing-function $delay;
+   -webkit-transition:-webkit-transform $duration $timing-function $delay;
+   -o-transition:-o-transform $duration $timing-function $delay;
+   -moz-transition:-moz-transform $duration $timing-function $delay;
+}
+}
+
+@mixin transformScale($scaleX, $scaleY) {
+-ms-transform: scale($scaleX,$scaleY); /* IE 9 */
+ -webkit-transform: scale($scaleX,$scaleY); /* Safari */
+ transform: scale($scaleX,$scaleY); /* Standard syntax */
+}
+
+@mixin box-shadow($value) {
+-webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+   -ms-box-shadow: $value;
+       box-shadow: $value;
+}
+
+@mixin border-bottom-left-radius($radius) {
+-webkit-border-bottom-left-radius: $radius;
+  -moz-border-bottom-left-radius: $radius;
+   -ms-border-bottom-left-radius: $radius;
+       border-bottom-left-radius: $radius;
+}
+
+@mixin border-bottom-right-radius($radius) {
+-webkit-border-bottom-right-radius: $radius;
+  -moz-border-bottom-right-radius: $radius;
+   -ms-border-bottom-right-radius: $radius;
+       border-bottom-right-radius: $radius;
+}
+
+@mixin border-top-left-radius($radius) {
+-webkit-border-top-left-radius: $radius;
+  -moz-border-top-left-radius: $radius;
+   -ms-border-top-left-radius: $radius;
+       border-top-left-radius: $radius;
+}
+
+@mixin border-top-right-radius($radius) {
+-webkit-border-top-right-radius: $radius;
+  -moz-border-top-right-radius: $radius;
+   -ms-border-top-right-radius: $radius;
+       border-top-right-radius: $radius;
+}
+
+@mixin box-sizing($value) {
+-webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+       box-sizing: $value;
+}
+
+@mixin user-select($value) {
+-webkit-user-select: $value;
+  -moz-user-select: $value;
+   -ms-user-select: $value;
+    -o-user-select: $value;
+       user-select: $value;
+}
+
+@mixin display-flex() {
+display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+display: -ms-flexbox;      /* TWEENER - IE 10 */
+display: -webkit-flex;     /* NEW - Chrome */
+display: flex;
+}
+
+/* Sometimes display flex doesn't work in firefox, in that case overwrite specific firefox conditional */
+@-moz-document url-prefix() { 
+// .selector {
+//  display: -moz-box;
+// }
+}
+
+@mixin justify-content($value) {
+-webkit-justify-content: $value;
+-ms-flex-pack: $value; /* For ancient IE 10, callback justify-content:$value; */
+justify-content: $value;
+}
+
+@mixin align-items($value) {
+-webkit-align-items: $value;
+-ms-flex-align: $value; /* For ancient IE 10, callback align-items: $value; */
+ align-items: $value;
+}
+
+@mixin flex-direction($value) {
+-webkit-flex-direction: $value;
+-ms-flex-direction: $value; /* For ancient IE 10, callback flex-direction: $value; */
+ flex-direction: $value;
+}
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+// For Google Chrome
+::-webkit-scrollbar {
+   width:  $size;
+   height: $size;
+}
+
+::-webkit-scrollbar-thumb {
+   background: $foreground-color;
+}
+
+::-webkit-scrollbar-track {
+   background: $background-color;
+}
+
+// For Internet Explorer
+body {
+ scrollbar-face-color: $foreground-color;
+ scrollbar-track-color: $background-color;
+}
+}
+
+// usage example
+// .box { @include border-radius(10px); }
+
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}

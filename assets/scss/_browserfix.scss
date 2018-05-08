@@ -1,0 +1,11 @@
+/* Target Safari */
+_::-webkit-:not(:root:root), .selector {
+  // property: value;
+}
+
+/* Target Firefox */
+@-moz-document url-prefix() { 
+  // .selector {
+  //  property: value;
+  // }
+}

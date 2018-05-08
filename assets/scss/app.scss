@@ -1,0 +1,14 @@
+@import 'node_modules/normalize-scss/sass/normalize'; // include node_modules files
+@include normalize();
+
+@import 'mixins';
+@import 'variable';
+
+@import 'bootstrap';
+
+@import 'responsive';
+
+// sample include images
+/* .logo {
+    background-image: url(/dist/images/logo.jpg);
+} */

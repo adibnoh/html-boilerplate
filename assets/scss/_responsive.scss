@@ -1,0 +1,13 @@
+// guideline
+@media (min-width: 1400px) {
+	$increment: 1 / 12;
+	@for $i from 1 through 12 {
+		.col-xlg-#{$i} {
+			width: #{percentage($i*$increment)};
+			float: left;
+		}
+		.col-xlg-offset-#{$i} {
+			margin-left: #{percentage($i*$increment)};
+		}
+	}
+}
