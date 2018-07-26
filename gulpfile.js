@@ -1,13 +1,13 @@
 var gulp = require('gulp'),
     gp_rename = require('gulp-rename'),
-    gp_uglify = require('gulp-uglify'),
+    minify = require('gulp-minify'),
     gp_sourcemaps = require('gulp-sourcemaps'),
     watch = require('gulp-watch'),
     sass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
     autoprefixer = require('gulp-autoprefixer'),
     babel = require('gulp-babel'),
-    browserify = require('gulp-browserify'),
+    bro = require('gulp-bro'),
     del = require('del'),
     runSequence = require('run-sequence');
 
@@ -31,9 +31,9 @@ gulp.task('buildjs', function(){
         'assets/js/app.js'
     ])
     .pipe(gp_sourcemaps.init())
-    .pipe(browserify())
+    .pipe(bro())
     .pipe(babel())
-    .pipe(gp_uglify())
+    .pipe(minify())
     .pipe(gp_sourcemaps.write('./'))
     .pipe(gulp.dest('dist/js'));
 });
@@ -68,12 +68,13 @@ gulp.task('watch', function () {
     , ['buildscss']);
 });
 
-gulp.task('dev-scss', function() {
+gulp.task('dev', function() {
     runSequence('clean',
                 'resources',
                 ['buildjs', 'buildscss'],
+                'watch',
                 function () {
-                    console.log('done');
+                    console.log('watching...');
                 });
 });
 
@@ -81,8 +82,7 @@ gulp.task('default', function() {
     runSequence('clean',
                 'resources',
                 ['buildjs', 'buildscss'],
-                'watch',
                 function () {
-                    console.log('watching...');
+                    console.log('done');
                 });
 });

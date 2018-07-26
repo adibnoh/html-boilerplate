@@ -25,7 +25,7 @@
 		<!-- Base CSS -->
 		<link type="text/css" rel="stylesheet" href="dist/css/app.css">
 
-		<script src="dist/js/app.js" defer></script>
+		<script src="dist/js/app-min.js" defer></script>
 
 	</head>
 	<body>
